@@ -1,0 +1,10 @@
+<div class="chat-list">
+    <div class="chat-item" *ngFor="let chat of chatsarray; let i = index">
+        <a [routerLink]="['/user', i]">
+            <img src="{{i}}.jpg" alt="">
+            <h3>{{chat.name}}</h3>
+            <p>{{chat.time ? chat.time : 'online'}}</p>
+        </a>
+    </div>
+</div>
+<router-outlet></router-outlet>

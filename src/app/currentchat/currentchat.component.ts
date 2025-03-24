@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Chats } from '../modules/chatsexample';
+import { CommonModule } from '@angular/common';
 
-
+interface message {
+  sender: string
+  receiver: string
+  time:  string
+  message: string
+  status: string
+}
 
 const getMessages = (id: number) => {
   return Chats[id]
@@ -10,14 +17,15 @@ const getMessages = (id: number) => {
 
 @Component({
   selector: 'app-currentchat',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './currentchat.component.html',
   styleUrl: './currentchat.component.scss'
 })
 export class CurrentchatComponent {
   userId: string | null = ''
 
-  messages: string = JSON.stringify(getMessages(Number(this.userId)))
+  messages: message[] = getMessages(Number(this.userId))
 
 
   constructor(private route: ActivatedRoute) { }
@@ -25,6 +33,7 @@ export class CurrentchatComponent {
   ngOnInit() { //нипанятна
     this.route.paramMap.subscribe((params) => {
       this.userId = params.get('id')
+      this.messages = getMessages(Number(this.userId))
     });
   }
 }

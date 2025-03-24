@@ -1,10 +1,17 @@
-<div class="chat-list">
-    <div class="chat-item" *ngFor="let chat of chatsarray; let i = index">
-        <a [routerLink]="['/user', i]">
-            <img src="{{i}}.jpg" alt="">
-            <h3>{{chat.name}}</h3>
-            <p>{{chat.time ? chat.time : 'online'}}</p>
-        </a>
+<div class="window">
+    <div class="chat-list">
+        <div>
+            <p [style.display]="searching ? 'none' : 'block' ">Contacts</p>
+            <input [style.display]="searching ? 'block' : 'none'" type="text">
+            <h2 (click)="searching = !searching">🔍</h2>
+        </div>
+        <div class="chat-item" *ngFor="let chat of chatsarray; let i = index">
+            <a [routerLink]="['/user', i]">
+                <img src="{{i}}.jpg" alt="">
+                <h3>{{chat.name}}</h3>
+                <p>{{chat.time ? chat.time : 'online'}}</p>
+            </a>
+        </div>
     </div>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

@@ -6,11 +6,15 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-chats',
-  imports: [CommonModule,RouterOutlet,RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.scss'
 })
 
 export class ChatsComponent {
+  searching: boolean = false
+
+
   chatsarray: { name: string, time: string | null }[] = data
 }

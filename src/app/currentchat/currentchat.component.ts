@@ -22,8 +22,10 @@ const getMessages = (id: number) => {
   templateUrl: './currentchat.component.html',
   styleUrl: './currentchat.component.scss'
 })
+
+
 export class CurrentchatComponent {
-  userId: string | null = ''
+  userId: number | null = 0
 
   messages: message[] = getMessages(Number(this.userId))
 
@@ -32,7 +34,7 @@ export class CurrentchatComponent {
 
   ngOnInit() { //нипанятна
     this.route.paramMap.subscribe((params) => {
-      this.userId = params.get('id')
+      this.userId = Number(params.get('id'))
       this.messages = getMessages(Number(this.userId))
     });
   }

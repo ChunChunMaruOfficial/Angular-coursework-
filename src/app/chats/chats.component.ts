@@ -16,5 +16,5 @@ export class ChatsComponent {
   searching: boolean = false
 
 
-  chatsarray: { name: string, time: string | null }[] = data
+  chatsarray: { name: string, time: string | null }[] = data.concat(data)
 }

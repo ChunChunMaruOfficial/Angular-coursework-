@@ -12,14 +12,22 @@ body {
     background-color: #2b2d42;
 }
 
-button{
+button {
     transition: .3s ease-in-out;
     width: max-content;
-    &:hover{
-    cursor: pointer;
-    scale: 1.04;
+
+    &:hover {
+        cursor: pointer;
+        scale: 1.04;
     }
-    &:active{
-        scale: 1; 
+
+    &:active {
+        scale: 1;
     }
+}
+
+app-currentchat {
+    flex-grow: 1;
+    display: flex;
+    overflow: auto;
 }

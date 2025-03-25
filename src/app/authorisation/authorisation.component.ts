@@ -21,8 +21,8 @@ export class AuthorisationComponent {
   logging() {
     if (this.phonenumber) {
       this.h2text = '💅 Viber 2'
-      if (!localStorage.getItem(this.phonenumber)) {
-        localStorage.setItem(this.phonenumber, JSON.stringify({ nickname: this.nickname, phonenumber: this.phonenumber, email: this.email }))
+      if (!localStorage.getItem('user')) {
+        localStorage.setItem('user', JSON.stringify({ nickname: this.nickname, phonenumber: this.phonenumber, email: this.email }))
       }
       this.router.navigate(['../']);
     } else {

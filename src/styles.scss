@@ -10,6 +10,7 @@
 
 body {
     background-color: #2b2d42;
+    overflow: hidden;
 }
 
 button {
@@ -29,5 +30,5 @@ button {
 app-currentchat {
     flex-grow: 1;
     display: flex;
-    overflow: auto;
+    overflow-x: hidden;
 }

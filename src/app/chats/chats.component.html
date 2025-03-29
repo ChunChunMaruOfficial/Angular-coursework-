@@ -1,17 +1,19 @@
 <div class="window">
+<app-settings  [class.closing]="settings === false" [class.opening]="settings === true" (closing)="doclosing($event)"></app-settings>
     <div class="chat-list">
         <div>
+            <h2 (click)="settings =  true">⚙</h2>
             <p [style.display]="searching ? 'none' : 'block' ">Contacts</p>
             <input placeholder="Search a contact" [style.display]="searching ? 'block' : 'none'" type="text">
             <h2 (click)="searching = !searching">🔍</h2>
         </div>
         <div class="chat-item" *ngFor="let chat of chatsarray; let i = index">
             <a [routerLink]="['/user', i]">
-                <img src="{{i}}.jpg" alt="">
+                <img src="contactspfp/{{i}}.jpg" alt="">
                 <h3>{{chat.name}}</h3>
                 <p>{{chat.time ? chat.time : 'online'}}</p>
             </a>
         </div>
     </div>
     <router-outlet></router-outlet>
-</div>
+</div> 

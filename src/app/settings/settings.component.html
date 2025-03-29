@@ -1,0 +1,18 @@
+
+     <h2 (click)="Sendclosing()">✖</h2>
+    <span><img src="userpfp/{{pfpnumber}}.jpg" alt=""><button (click)="Changepfp()">change a pfp</button></span>
+    <div>
+        <span>🌚 Никнейм </span>
+        <input [(ngModel)]="nickname" type="text" placeholder="ChunChunMaru">
+    </div>
+    <div>
+        <span>🤙 Номер телефона </span>
+        <input [style.border]="!phonenumber ? '1px solid red' : ''" [(ngModel)]="phonenumber" type="tel"
+            placeholder="+375 (29) и бла-бла-бла">
+    </div>
+    <div>
+        <span>📧 Электронная почта </span>
+        <input [style.border]="!phonenumber && !email ? '1px solid red' : ''" [(ngModel)]="email" type="email"
+            placeholder="что-то там с gmail или email">
+    </div>
+    <button title="apply" [innerHTML]="buttontext" (click)="Apply()"></button>

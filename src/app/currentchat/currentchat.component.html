@@ -1,15 +1,15 @@
 <div class="chatwindow">
     <div *ngFor="let message of messages">
-        <img [src]="message.sender == 'N0Nam3' ? '1.jpg' : userId + '.jpg'" alt="">
+        <img [src]="message.sender == 'user' ? 'userpfp/' + pfpnumber + '.jpg' : 'contactspfp/' + userId + '.jpg'" alt="">
         <div class="message received">
             <div class="message-header">
-              <span class="sender" [innerHTML]="message.sender"></span>
+              <span class="sender" [innerHTML]="message.sender == 'user' ? nickname : message.sender"></span>
               <span class="time" [innerHTML]="message.time"></span>
-              <span class="status" [innerHTML]="message.status"></span>
+              <span class="status" [innerHTML]="message.status ? '✔' : ''"></span>
             </div>
             <div class="message-content"  [innerHTML]="message.message">
             </div>
-          </div>
+          </div> 
     </div>
     <div><input type="text" placeholder="enter a message" name="" id=""> <button>send 🗨</button></div>
 </div>

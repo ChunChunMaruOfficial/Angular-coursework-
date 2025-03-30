@@ -16,14 +16,22 @@ export class NewcontactComponent {
   phonenumber: string = ''
   email: string = ''
   pfpnumber: number = 0
+  alert: boolean = false
 
+  constructor(public randomService: GetRandomService, public contacts: ContactsService) { }
 
-constructor(public randomService: GetRandomService,public contacts: ContactsService){}
+  contactadding() {
+    if (!this.nickname && !this.phonenumber && !this.email) {
+      this.alert = true
 
-contactadding(){
-  
-  this.contacts.pushcontacts({name: this.nickname || this.phonenumber || this.email, time: `${this.randomService.getRandom(1, 23)} : ${this.randomService.getRandom(0, 60)} AM`, id: this.pfpnumber })
-}
+    } else {
+      this.alert = false
+      this.contacts.pushcontacts({ name: this.nickname || this.phonenumber || this.email, time: `${this.randomService.getRandom(1, 23)} : ${this.randomService.getRandom(0, 60)} AM`, id: this.pfpnumber })
+      this.nickname = ''
+      this.phonenumber = ''
+      this.email = ''
+    }
+  }
 
   Changepfp() {
     this.pfpnumber = this.randomService.getRandom(0, 9)

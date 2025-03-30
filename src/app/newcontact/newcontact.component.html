@@ -1,21 +1,21 @@
-
-<span><h2 (click)="Sendclosing()">✖</h2><h1> Add a new contact</h1></span>
+<span>
+    <h2 (click)="Sendclosing()">✖</h2>
+    <h1> Add a new contact</h1>
+</span>
 <div>
-    <span>🌚 Никнейм</span>
+    <span>🌚 Nickname</span>
     <input [(ngModel)]="nickname" type="text" placeholder="Your new friend!">
 </div>
 <div>
-    <span>🤙 Номер телефона</span>
-    <input [(ngModel)]="phonenumber" type="tel"
-        placeholder="+375 (29) и бла-бла-бла">
+    <span>🤙 Phone number</span>
+    <input [(ngModel)]="phonenumber" type="tel" placeholder="+375 (29) и бла-бла-бла">
 </div>
 <div>
-    <span>📧 Электронная почта</span>
-    <input [(ngModel)]="email" type="email"
-        placeholder="что-то там с gmail или email">
+    <span>📧 Email</span>
+    <input [(ngModel)]="email" type="email" placeholder="что-то там с gmail или email">
 </div>
-<p>enter one of the three input fields</p>
+<p [style.color]="alert ? 'red' : 'white'">Enter one of the three input fields</p>
 <span><img src='contactspfp/{{pfpnumber}}.jpg' alt=""><button (click)="Changepfp()">change a pfp</button></span>
-<button (click)="contactadding(); Sendclosing()">
-    confirm
+<button aria-label="alert" (click)="contactadding(); !alert && Sendclosing()">
+confirm
 </button>

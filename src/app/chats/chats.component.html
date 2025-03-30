@@ -5,17 +5,17 @@
         <span class="addcontact"  (click)="newcontact = true"><img src="svg/chatlist/newcontact.svg" alt=""></span>
         <div>
             <h2 (click)="settings =  true">⚙</h2>
-            <p [style.display]="searching ? 'none' : 'block' ">Contacts</p>
-            <input placeholder="Search a contact" [style.display]="searching ? 'block' : 'none'" type="text">
-            <h2 (click)="searching = !searching">🔍</h2>
+            <h1 [style.display]="searching ? 'none' : 'block' ">Contacts</h1>
+            <input [(ngModel)]="findcontact" (input)="seacrhcontact()" placeholder="Search a contact" [style.display]="searching ? 'block' : 'none'" type="text">
+            <h2 (click)="searching = !searching" [innerHTML]="searching ? '✖' : '🔍'"></h2>
         </div>
-        <div class="chat-item" *ngFor="let chat of chatsarray; let i = index" (mouseenter)="mouseenter = i" (mouseleave)="mouseenter = -1">
-            <a [routerLink]="['/user', i]">
+        <div class="chat-item" [class.selected]='selected == i' *ngFor="let chat of chatsarray; let i = index" (click)="selected = i" (mouseenter)="mouseenter = i" (mouseleave)="mouseenter = -1">
+            <a [routerLink]="['/user', chat.id]">
                 <img src="contactspfp/{{chat.id}}.jpg" alt="">
                 <h3>{{chat.name}}</h3>
                 <p>{{chat.time ? chat.time : 'online'}}</p>
             </a>
-        <button class="delete" (click)="deletecontact(i)" [style.display]="mouseenter == i ? 'block' : 'none'"><img src="svg/chatlist/deletechat.svg" alt=""></button>
+        <button aria-label="delete" class="delete" (click)="deletecontact(i)" *ngIf="mouseenter == i"><img src="svg/chatlist/deletechat.svg" alt=""></button>
         </div>
     </div>
     <router-outlet></router-outlet>

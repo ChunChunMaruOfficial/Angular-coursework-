@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from '../settings/settings.component';
 import { ContactsService } from '../services/contacts/contacts.service';
 import { NewcontactComponent } from '../newcontact/newcontact.component';
+import { MessagesService } from '../services/messages/messages.service';
+
 
 @Component({
   selector: 'app-chats',
@@ -20,17 +22,28 @@ export class ChatsComponent {
   settings: boolean | null = null
   newcontact: boolean | null = null
   mouseenter: number = -1
+  findcontact: string = ''
+  selected: number = -1
+  chatsarray: { name: string, time: string | null, id: number }[] = []
 
-  constructor(public contacts: ContactsService) {
+
+  constructor(public contacts: ContactsService, public messages: MessagesService) { this.getAllcontacts() }
+
+  getAllcontacts() {
     this.contacts.contactspublic.subscribe(v => {
       this.chatsarray = v
     })
   }
 
-  chatsarray: { name: string, time: string | null, id: number }[] = []
+  seacrhcontact() {
+    console.log('1212');
+    this.chatsarray.length == 0 && this.getAllcontacts()
+    this.findcontact != '' ? this.chatsarray = this.chatsarray.filter(v => v.name.toLowerCase().includes(this.findcontact.toLowerCase())) : this.getAllcontacts()
+  }
 
-  deletecontact(i:number){
+  deletecontact(i: number) {
     this.contacts.deletecontact(i)
+    
   }
 
   doclosingnewcontact(e: boolean) {

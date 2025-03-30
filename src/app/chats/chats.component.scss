@@ -13,6 +13,8 @@
    animation: opening .3s forwards ease-in-out;
 }
 
+
+app-newcontact,
 app-settings{
   transform: translateX(-110%);
   position: absolute;
@@ -21,7 +23,7 @@ app-settings{
   left: 0;
   width: 400px;
   height: 97vh;
-  background-color: #231942;
+  background-color: #1B263B;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -31,11 +33,11 @@ app-settings{
 }
 
   .chat-list {
+    background-color: #778DA9;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    background-color: #f5f5f5;
     width: 400px;
     height: 97vh;
     overflow: auto;
@@ -66,7 +68,7 @@ app-settings{
     .chat-item {
       display: flex;
       align-items: center;
-      background-color: #ffffff;
+      background-color: #415A77;
       border-radius: 8px;
       transition: transform 0.2s ease box-shadow 0.2s ease;
       height: 80px;
@@ -99,20 +101,35 @@ app-settings{
       h3 {
         margin: 0;
         font-size: 1.1rem;
-        color: #333333;
+        color: #E0E1DD;
         font-weight: 600;
       }
 
       p {
         margin: 0;
         font-size: 0.9rem;
-        color: #777777;
+        color: #E0E1DD;
 
         &::before {
           content: '•';
           color: #4caf50;
           margin-right: 0.5rem;
         }
+      }
+    }
+
+    .addcontact{
+      padding: 15px;
+      background-color: #E0E1DD;
+      border-radius: 100px;
+      position: fixed;
+      z-index: 1;
+      left: 15px;
+      bottom: 15px;
+
+      &:hover{
+        cursor: pointer;
+        scale: 1.01;
       }
     }
   }

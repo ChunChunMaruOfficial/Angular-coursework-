@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class UserdataService {
   private nickname = new BehaviorSubject<string | null>(localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user')!).nickname

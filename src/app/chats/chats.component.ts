@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { data } from '../modules/chatsarray';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from '../settings/settings.component';
-
+import { ContactsService } from '../services/contacts/contacts.service';
+import { NewcontactComponent } from '../newcontact/newcontact.component';
 @Component({
   selector: 'app-chats',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, FormsModule, SettingsComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, FormsModule, SettingsComponent, NewcontactComponent],
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.scss'
 })
@@ -17,10 +17,23 @@ import { SettingsComponent } from '../settings/settings.component';
 export class ChatsComponent {
   searching: boolean = false
   settings: boolean | null = null
+  newcontact: boolean | null = null
+  mouseenter: number = -1
+  constructor(public contacts: ContactsService) {
+    this.contacts.contactspublic.subscribe(v => {
+      this.chatsarray = v
+    })
+  }
 
-  chatsarray: { name: string, time: string | null }[] = data.concat(data)
+  chatsarray: { name: string, time: string | null }[] = []
 
-  doclosing(e: boolean) {
+
+  doclosingnewcontact(e: boolean) {
+    this.newcontact = e
+    console.log(this.newcontact);
+    
+  }
+  doclosingsettings(e: boolean) {
     this.settings = e
   }
 } 

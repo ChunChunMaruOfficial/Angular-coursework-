@@ -1,0 +1,20 @@
+<h2 (click)="Sendclosing()">✖</h2>
+<h1> Add a new contact</h1>
+<div>
+    <span>🌚 Никнейм (необязательно)</span>
+    <input [(ngModel)]="nickname" type="text" placeholder="Your new friend!">
+</div>
+<div>
+    <span>🤙 Номер телефона *</span>
+    <input [style.border]="!phonenumber ? '1px solid red' : ''" [(ngModel)]="phonenumber" type="tel"
+        placeholder="+375 (29) и бла-бла-бла">
+</div>
+<div>
+    <span>📧 Электронная почта (необязательно, если указан телефон)</span>
+    <input [style.border]="!phonenumber && !email ? '1px solid red' : ''" [(ngModel)]="email" type="email"
+        placeholder="что-то там с gmail или email">
+</div>
+<span><img src='userpfp/{{pfpnumber}}.jpg' alt=""><button (click)="Changepfp()">change a pfp</button></span>
+<button (click)="contactadding()">
+    confirm
+</button>

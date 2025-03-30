@@ -27,7 +27,6 @@ export class AuthorisationComponent {
   Changepfp() {
     this.pfpnumber = this.randomService.getRandom(0, 9)
     console.log(this.pfpnumber);
-
   }
 
   logging() {

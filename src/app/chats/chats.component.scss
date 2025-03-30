@@ -6,31 +6,32 @@
   display: flex;
   flex-direction: row;
 
-.closing{
-   animation: closing .3s forwards ease-in-out;
-}
-.opening{
-   animation: opening .3s forwards ease-in-out;
-}
+  .closing {
+    animation: closing .3s forwards ease-in-out;
+  }
+
+  .opening {
+    animation: opening .3s forwards ease-in-out;
+  }
 
 
-app-newcontact,
-app-settings{
-  transform: translateX(-110%);
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 97vh;
-  background-color: #1B263B;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 30px;
+  app-newcontact,
+  app-settings {
+    transform: translateX(-110%);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 97vh;
+    background-color: #1B263B;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 30px;
 
-}
+  }
 
   .chat-list {
     background-color: #778DA9;
@@ -52,12 +53,12 @@ app-settings{
       gap: 20px;
 
       input {
-        padding: 4px;
+        padding: 8px;
         border-radius: 5px;
-        background-color: #EDF2F4;
+        background-color: #415A77;
         font-size: 18px;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
-
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        color: #e0e0e0;
       }
 
       h2:hover {
@@ -116,9 +117,23 @@ app-settings{
           margin-right: 0.5rem;
         }
       }
+
+      .delete {
+        >img {
+          border: none;
+          height: 1.4rem;
+          width: 1.4em;
+          border-radius: 0;
+        }
+
+        padding: 8px;
+        background-color: #1B263B;
+        border-radius: 10px;
+        margin-inline: 5px;
+      }
     }
 
-    .addcontact{
+    .addcontact {
       padding: 15px;
       background-color: #E0E1DD;
       border-radius: 100px;
@@ -127,7 +142,7 @@ app-settings{
       left: 15px;
       bottom: 15px;
 
-      &:hover{
+      &:hover {
         cursor: pointer;
         scale: 1.01;
       }
@@ -137,18 +152,21 @@ app-settings{
 
 
 @keyframes closing {
-  from{
+  from {
     transform: translateX(0);
   }
-  to{
+
+  to {
     transform: translateX(-110%);
   }
 }
+
 @keyframes opening {
-  from{
+  from {
     transform: translateX(-110%);
   }
-  to{
+
+  to {
     transform: translateX(0);
   }
 }

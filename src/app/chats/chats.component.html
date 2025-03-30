@@ -11,11 +11,11 @@
         </div>
         <div class="chat-item" *ngFor="let chat of chatsarray; let i = index" (mouseenter)="mouseenter = i" (mouseleave)="mouseenter = -1">
             <a [routerLink]="['/user', i]">
-                <img src="contactspfp/{{i}}.jpg" alt="">
+                <img src="contactspfp/{{chat.id}}.jpg" alt="">
                 <h3>{{chat.name}}</h3>
                 <p>{{chat.time ? chat.time : 'online'}}</p>
             </a>
-        <button [style.display]="mouseenter == i ? 'block' : 'none'">ldfg</button>
+        <button class="delete" (click)="deletecontact(i)" [style.display]="mouseenter == i ? 'block' : 'none'"><img src="svg/chatlist/deletechat.svg" alt=""></button>
         </div>
     </div>
     <router-outlet></router-outlet>

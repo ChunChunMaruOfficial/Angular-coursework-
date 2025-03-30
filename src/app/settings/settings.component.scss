@@ -1,5 +1,18 @@
 
 
+    .logout{
+      border-radius: 0;
+      border: none;
+      height: 1.5rem;
+      width: 1.5rem;
+      object-fit: cover;
+    }
+    a{
+      margin-left: 10px;
+
+      width: 24px;
+      height: 24px;
+    }
     h2 {
       color: #f8f9fa;
       margin: 0 10px;

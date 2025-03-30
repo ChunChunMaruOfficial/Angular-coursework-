@@ -1,4 +1,11 @@
-export const Chats = [
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ContactsService } from '../contacts/contacts.service';
+@Injectable({
+  providedIn: 'root'
+})
+export class MessagesService {
+  private chats = new BehaviorSubject<{ sender: string, receiver: string, time: string, message: string, status: boolean }[][]>([
     [
       { sender: "user", receiver: "Алексей Учитель", time: "08:10", message: "Алексей, вы случайно не видели мой конспект? Я его вчера использовал как подставку для пиццы...", status: true },
       { sender: "Алексей Учитель", receiver: "user", time: "08:12", message: "Нашел. Страница 3 с рисунком 'котик в космосе' — это новая методика запоминания формул?", status: true },
@@ -55,8 +62,27 @@ export const Chats = [
     ],
     [
       { sender: "user", receiver: "user", time: "00:01", message: "Я тут клон? Или это глюк в матрице? 🕳️ P.S. Если да, то какой из нас оригинал?", status: true },
-      { sender: "user", receiver: "user", time: "00:02", message: "Шок! Сегодня ты забыл поставить хлеб в холодильник. Это начало конца. 🍞⚰️", status: true },
+      { sender: "u2ser", receiver: "user", time: "00:02", message: "Шок! Сегодня ты забыл поставить хлеб в холодильник. Это начало конца. 🍞⚰️", status: true },
       { sender: "user", receiver: "user", time: "00:05", message: "Напоминаю: завтра забрать мозг из химчистки. И купить молоко. Или это уже сделал мой клон? 🥛", status: true },
-      { sender: "user", receiver: "user", time: "00:06", message: "P.S. Ты гений. Но молоко всё равно забудь. #Судьба 🥛🔫", status: false }
+      { sender: "u2ser", receiver: "user", time: "00:06", message: "P.S. Ты гений. Но молоко всё равно забудь. #Судьба 🥛🔫", status: false }
     ]
-  ];
+  ])
+
+  
+  public chatspublic = this.chats.asObservable()
+  
+  chatsarray: { name: string, time: string | null, id: number }[] = []
+
+    constructor(public contacts: ContactsService) {
+      this.contacts.contactspublic.subscribe(v => {
+        this.chatsarray = v
+      })
+    }
+  
+
+setchat(i:number, message: string){
+  const updatechat = this.chats.value
+  updatechat[i].push({sender: 'user', receiver: this.chatsarray[i].name , time: `${new Date().getHours()}:${new Date().getMinutes()}`, message: message, status: false})
+  this.chats.next(updatechat)
+}
+}

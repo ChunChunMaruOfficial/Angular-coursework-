@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GetRandomService } from '../services/getRandom/get-random.service';
 import { UserdataService } from '../services/userdata/userdata.service';
-
+import { RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-settings',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
@@ -62,6 +62,7 @@ export class SettingsComponent {
       this.userdata.setnickname(this.nickname)
       this.userdata.setphonenumber(this.phonenumber)
       this.userdata.setpfp(this.pfpnumber)
+      this.Sendclosing()
     } else {
       this.buttontext = 'please, enter a phonenumber';
     }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GetRandomService } from '../services/getRandom/get-random.service';
-
+import { ContactsService } from '../services/contacts/contacts.service';
 @Component({
   selector: 'app-newcontact',
   imports: [FormsModule],
@@ -18,10 +18,11 @@ export class NewcontactComponent {
   pfpnumber: number = 0
 
 
-constructor(public randomService: GetRandomService){}
+constructor(public randomService: GetRandomService,public contacts: ContactsService){}
 
 contactadding(){
-
+  
+  this.contacts.pushcontacts({name: this.nickname || this.phonenumber || this.email, time: `${this.randomService.getRandom(1, 23)} : ${this.randomService.getRandom(0, 60)} AM`, id: this.pfpnumber })
 }
 
   Changepfp() {

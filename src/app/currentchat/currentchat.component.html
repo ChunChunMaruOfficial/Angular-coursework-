@@ -1,6 +1,6 @@
 <div class="chatwindow">
     <div *ngFor="let message of messages">
-        <img [src]="message.sender == 'user' ? 'userpfp/' + pfpnumber + '.jpg' : 'contactspfp/' + userId + '.jpg'" alt="">
+        <img [src]="message.sender == 'user' ? 'userpfp/' + pfpnumber + '.jpg' : 'contactspfp/' + userpfp + '.jpg'" alt="">
         <div class="message received">
             <div class="message-header">
               <span class="sender" [innerHTML]="message.sender == 'user' ? nickname : message.sender"></span>
@@ -11,5 +11,5 @@
             </div>
           </div> 
     </div>
-    <div><input type="text" placeholder="enter a message" name="" id=""> <button>send 🗨</button></div>
+    <div><input [(ngModel)]="messagetext" type="text" placeholder="enter a message" name="" id=""> <button (click)="sendmessage()">send 🗨</button></div>
 </div>

@@ -1,18 +1,18 @@
 <div class="form-container">
     <h1 [innerHTML]="h2text"></h1>
     <div>
-        <span>🌚 Никнейм (необязательно)</span>
+        <span>🌚 Nickname (optional)</span>
         <input [(ngModel)]="nickname" type="text" placeholder="ChunChunMaru">
     </div>
     <div>
-        <span>🤙 Номер телефона *</span>
+        <span>🤙 Phone number *</span>
         <input [style.border]="!phonenumber ? '1px solid red' : ''" [(ngModel)]="phonenumber" type="tel"
-            placeholder="+375 (29) и бла-бла-бла">
+            placeholder="+375 (29) and blah blah blah">
     </div>
     <div>
-        <span>📧 Электронная почта (необязательно, если указан телефон)</span>
+        <span>📧 Email (optional if phone number is provided)</span>
         <input [style.border]="!phonenumber && !email ? '1px solid red' : ''" [(ngModel)]="email" type="email"
-            placeholder="что-то там с gmail или email">
+            placeholder="something with gmail or email">
     </div>
     <span><img src='userpfp/{{pfpnumber}}.jpg' alt=""><button (click)="Changepfp()">change a pfp</button></span>
     <button (click)="logging()">

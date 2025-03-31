@@ -4,14 +4,14 @@
 </div>
 <div class="chatwindow">
   <div *ngFor="let message of messages; let i = index"
-    [class.usersmessage]="message.sender == 'user' || message.sender == nickname"
-    [class.fremdmessage]="message.sender != 'user' && message.sender != nickname"
+    [class.usersmessage]="message.sender == 'user'"
+    [class.fremdmessage]="message.sender != 'user'"
     >
 
     <img
       [src]="message.sender == 'user' || message.sender == nickname ? 'userpfp/' + pfpnumber + '.jpg' : 'contactspfp/' + userId + '.jpg'"
       alt="">
-    <div class="message received" [class.sendermessage]="message.sender != 'user' && message.sender != nickname">
+    <div class="message received" [class.sendermessage]="message.sender != 'user'">
       <div class="message-header">
         <span class="sender" [innerHTML]="message.sender == 'user' ? nickname : message.sender"></span>
         <span class="time" [innerHTML]="message.time"></span>
@@ -20,9 +20,9 @@
       <div class="message-content" [innerHTML]="message.message">
       </div>
     </div>
-    <button *ngIf="message.sender == 'user' || message.sender == nickname" aria-label="deletemessage"
+    <button *ngIf="message.sender == 'user'" aria-label="deletemessage"
       (click)="deletemessage(i)"><img src="svg/chatlist/deletechat.svg" alt=""></button>
-    <button *ngIf="message.sender == 'user' || message.sender == nickname" aria-label="editmessage"
+    <button *ngIf="message.sender == 'user'" aria-label="editmessage"
       (click)="editmessage(i)"><img src="svg/chat/editmessage.svg" alt=""></button>
   </div>
 

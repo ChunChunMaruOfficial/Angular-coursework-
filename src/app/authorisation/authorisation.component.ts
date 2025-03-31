@@ -41,7 +41,7 @@ export class AuthorisationComponent {
 
       this.router.navigate(['user']);
     } else {
-      this.h2text = 'введите номер, сэр'
+      this.h2text = 'Please enter the number sir'
     }
   }
 }

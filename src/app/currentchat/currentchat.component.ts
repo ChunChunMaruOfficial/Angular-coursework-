@@ -71,7 +71,7 @@ export class CurrentchatComponent {
 
   sendmessage() {
     if (this.userId != null && this.messagetext != '')
-      this.messagesserv.setchat(this.userId, this.messagetext, this.nickname, this.contactsarray[this.userId].name)
+      this.messagesserv.setchat(this.userId, this.messagetext, 'user', this.contactsarray[this.userId].name)
 
     setTimeout(() => {
       if (this.userId != null)

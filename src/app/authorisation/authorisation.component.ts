@@ -32,14 +32,14 @@ export class AuthorisationComponent {
   logging() {
     if (this.phonenumber) {
       this.h2text = '💅 Viber 2'
-      localStorage.setItem('user', JSON.stringify({ nickname: this.nickname, phonenumber: this.phonenumber, email: this.email, pfp: this.pfpnumber }))
+      localStorage.setItem('user', JSON.stringify({ nickname: this.nickname != '' ? this.nickname : 'casual enjoyeer', phonenumber: this.phonenumber, email: this.email, pfp: this.pfpnumber }))
 
       this.userdata.setemail(this.email)
       this.userdata.setnickname(this.nickname)
       this.userdata.setphonenumber(this.phonenumber)
       this.userdata.setpfp(this.pfpnumber)
 
-      this.router.navigate(['../']);
+      this.router.navigate(['user']);
     } else {
       this.h2text = 'введите номер, сэр'
     }

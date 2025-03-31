@@ -1,6 +1,12 @@
+<div class="info">    
+  <img [src]="'contactspfp/' + userId + '.jpg'" alt="">
+  <h2 [innerHTML]="fremdname"></h2>
+</div>
 <div class="chatwindow">
   <div *ngFor="let message of messages; let i = index"
-    [class.usersmessage]="message.sender == 'user' || message.sender == nickname">
+    [class.usersmessage]="message.sender == 'user' || message.sender == nickname"
+    [class.fremdmessage]="message.sender != 'user' && message.sender != nickname"
+    >
 
     <img
       [src]="message.sender == 'user' || message.sender == nickname ? 'userpfp/' + pfpnumber + '.jpg' : 'contactspfp/' + userId + '.jpg'"
@@ -28,7 +34,7 @@
       <h2 (click)="removeediting()">✖</h2>
     </span>
     <span>
-      <input [(ngModel)]="messagetext" type="text" placeholder="enter a message" name="" id=""> <button aria-label="editing-sending" [innerHTML]="edittext ? 'edit message' : 'send message' "
+      <input [(ngModel)]="messagetext" type="text" placeholder="enter a message" name="" id=""> <button *ngIf="messagetext != ''" aria-label="editing-sending" [innerHTML]="edittext ? 'edit message' : 'send message' "
         (click)="edittext ? sendediting() : sendmessage()"></button>
     </span>
   </div>

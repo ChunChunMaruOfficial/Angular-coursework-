@@ -26,6 +26,7 @@ interface message {
 
 
 export class CurrentchatComponent {
+  fremdname: string = ''
   userId: number | null = 0
   nickname: string = ''
   pfpnumber: number = 0
@@ -33,16 +34,20 @@ export class CurrentchatComponent {
   messagetext: string = '' //сообщение юзера
   edittext: string = ''
   idofeditingmessage: number = -1
-
   contactsarray: { name: string, time: string | null, id: number }[] = []
+
   constructor(public getRandom: GetRandomService, private route: ActivatedRoute, private userdata: UserdataService, public contacts: ContactsService, public messagesserv: MessagesService, public randomanswers: RandomanswersService) { }
 
-  ngOnInit() { //нипанятна
+  ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.userId = Number(params.get('id'))
       this.contacts.contactspublic.subscribe(array => {
         if (this.userId != null) {
           this.contactsarray = array
+          console.log(this.contactsarray[this.userId].name)
+
+          const foundContact = this.contactsarray.find(v => v.id === this.userId)
+          this.fremdname = foundContact ? foundContact.name : ''
         }
       })
       this.messagesserv.chatspublic.subscribe(array => {
@@ -65,7 +70,7 @@ export class CurrentchatComponent {
   }
 
   sendmessage() {
-    if (this.userId != null)
+    if (this.userId != null && this.messagetext != '')
       this.messagesserv.setchat(this.userId, this.messagetext, this.nickname, this.contactsarray[this.userId].name)
 
     setTimeout(() => {

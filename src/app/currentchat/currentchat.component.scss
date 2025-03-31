@@ -1,3 +1,23 @@
+.info {
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+    background-color: #415A77;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+
+    >img {
+        height: 3em;
+        border-radius: 100%;
+    }
+
+    >h2{
+       color: #e9ecef; 
+    }
+}
+
 .chatwindow {
     width: 100%;
     display: flex;
@@ -5,9 +25,10 @@
     justify-content: end;
     padding-inline: 200px;
 
-    >div:not(div:last-of-type) {
+    >.fremdmessage,
+    >.usersmessage {
         display: flex;
-        flex-direction: row;
+        opacity: 0;
         align-items: end;
         margin-bottom: 25px;
         gap: 15px;
@@ -40,14 +61,21 @@
         background: #415A77;
     }
 
+    .fremdmessage {
+        animation: showfremd .5s forwards ease-out;
+        flex-direction: row;
+    }
+
     .usersmessage {
         align-self: flex-end;
-        flex-direction: row-reverse !important;
+        flex-direction: row-reverse;
+        animation: showuser .5s forwards ease-out;
 
         >div {
             padding: 12px;
             border-radius: 20px 20px 0 20px;
             background-color: #0D1B2A;
+
         }
     }
 
@@ -63,14 +91,16 @@
             border-radius: 20px 20px 0 0;
             padding-block: 20px;
             position: relative;
+            transform: translateY(100%);
+            animation: showeditplace .5s forwards ease-out;
 
             >h2 {
-                color: white;
+                color: #e9ecef;
                 justify-self: flex-end;
                 position: absolute;
-                right: 20px; 
+                right: 20px;
 
-                &:hover{
+                &:hover {
                     cursor: pointer;
                 }
             }
@@ -80,7 +110,7 @@
             }
 
             >span {
-                color: white;
+                color: #e9ecef;
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
@@ -153,4 +183,40 @@
         }
     }
 
+}
+
+@keyframes showuser {
+    from {
+        opacity: 0;
+        transform: translateX(35%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes showfremd {
+    from {
+        opacity: 0;
+        transform: translateX(-35%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes showeditplace {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
